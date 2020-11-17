@@ -1,0 +1,83 @@
+= Customizable Features in LIS
+
+The LIS core is designed with extensible interfaces for facilitating easy
+incorporation of new features into LIS. The LIS core uses advanced features of
+the Fortran 90 programming language, which are especially suitable for object
+oriented programming. The object oriented style of design adopted in LIS enables
+the core to provide well defined interfaces or "plug points" for enabling rapid
+prototyping and development of new features and applications into LIS.
+
+The LIS core includes a number of abstractions including:
+
+* *surface model:* Interfaces for adding new land and water (such as lake)
+surface models.
+* *meteorological forcing:* Interfaces for adding new model
+forcing schemes.
+* *data assimilation:* Interfaces for specifying
+assimilation of observational data using data assimilation algorithms.
+
+The actual implementation of a component uses these abstractions following the
+concept of polymorphism.
+
+== What is polymorphism?
+
+The modules in LIS are constructed using a component-based design, with each
+module/component designed to abstract the behavior of a certain program segment.
+The interfaces are designed to emulate the concept of polymorphism from the
+object oriented software design world. As the definition of the word implies,
+polymorphism is the state of being able to assume different forms. A polymorphic
+method is typically defined with minimal and common functionality, and specific
+implementations of the methods override the polymorphic method. Figure 2 shows
+an example of polymorphic behaviour in the real world. A car class is a
+polymorphic module, and sports car and van are specific instances of the
+abstract, car class. The car class might contain a move method, which could be
+overwritten with a different behaviour in the sports car and van classes. In
+object oriented programming, the move method is always invoked on the
+polymorphic class (car), and depending on the specific instance used in the
+simulation, the move call will be delegated to the move call of the sports car
+or the move call of the van class. Unfortunately, true polymorphism and the
+automatic delegation of the polymorphic methods to the specific instances are
+true object oriented features. Since Fortran 90 is not an object oriented
+language, polymorphism can only be simulated only in software. This is achieved
+by the use of virtual function tables. The virtual function tables maintain a
+list of specific instances of each polymorphic method. Since Fortran is not an
+object oriented language, the task of adding the functions or "registering" the
+functions into the virtual function tables needs to be performed to simulate
+polymorphism. The C language allows the capability to store functions, table
+them, and pass them as arguments. The Fortran 90 programming language allows
+passing of functions as arguments. By combining these features of both
+languages, LIS uses a complete set of operations with function pointers.
+
+// TODO: insert Figure 2 from LIS v7.0 Dev Guide
+
+== Polymorphism in LIS
+
+Polymorphism is simulated in LIS using virtual function tables and the actual
+delegation of the calls are done at run-time by resolving the function names
+from the table. Figure 3 illustrates how the function tables work. A function is
+stored in the table typically by a register function, that simply stores the
+pointer to the function at the specified index. The `call register(1,f1)` stores
+the function `f1` into the function table with an index of 1 and the call `call
+register(2,f2)` stores the function `f2` into the function table with with an
+index of 2. When the function needs to be accessed, a generic call is made which
+resolves into a specific call depending on the index specified. In this case,
+the call retrieve(1) invokes the method `f1` from the table and the call `call
+retrieve(2)` invokes the method `f2`. This implementation helps in defining
+generic calls in programs. In the following, "registry" is used to refer to a
+function table. In the LIS architecture, the customizable features listed in
+section 4 are implemented using the virtual function tables. For each
+customizable feature, abstract interfaces are provided by LIS, with the specific
+implementations and the addition to the corresponding registry left to the user.
+Once the functions are implemented and added to the registry, the appropriate
+delegation and linkages of the calls are handled by the LIS core software.
+Further, when a new feature is implemented in LIS, the user does not necessarily
+have to be familiar with the implementation details of the rest of the software.
+This feature enables rapid prototyping and testing of new applications into LIS.
+The LIS source code contains a number of sub directories, which are organized as
+components. The top-level organization of the source (`src`) is listed in Table 1.
+(See LIS' User's Guide for a comprehensive description of LIS' source
+organization.) The plugins directory contains modules where the registries for
+each polymorphic method are defined.
+
+// TODO: insert Figure 3 from LIS v7.0 Dev Guide
+// TODO: add Table 1 from LIS v7.0 Dev Guide

@@ -1,0 +1,47 @@
+= Background
+
+This section provides some general information about the LIS project and land surface modeling.
+
+== LIS
+
+Land surface models provide characterizations of the water and energy exchanges
+and biogeochemical processes of the soil-vegetation-snowpack medium. A realistic
+representation of these processes is critical for improving the understanding of
+the boundary layer and land-atmosphere interactions. The development of LIS
+has been motivated by the need to develop an infrastructure that combines the
+use of land surface simulation, available observations and the required
+computing tools for accurate land surface prediction. As discussed in #[6]#, LIS
+integrates and extends the capabilities of Land Data Assimilation Systems
+(LDASs) such as the 25km Global Land Data Assimilation System (GLDAS) and the
+12.5km North American Land Data Assimilation System (NLDAS). LIS is primarily an
+infrastructure for operating an ensemble of land surface models with
+capabilities for data integration and assimilation, over user-specified regional
+or global domains. The new phase in LIS development is to extend its
+capabilities by linking with other earth system components, enabling coupled
+systems that can model land-atmosphere interactions more eectively. LIS is
+designed using advanced software engineering principles, and features a highly
+modular, exible, object oriented, component-based framework. Figure 1 shows the
+software architecture of LIS. The core of the system consists of structures to
+manage generic utilities such as time, configuration, geospatial
+transformations, I/O, parallel computing constructs, logging, etc. These
+structures provide generic, model-independent support for high performance
+computing, resource management, data and I/O handling, and other functions.
+The LIS core controls the overall program execution and manages the inclusion of
+user-defined extensible components through several related abstractions. These
+abstractions, shown in the middle layer, include generic representations of land
+surface models, data assimilation schemes, meteorological forcing schemes,
+domains, running modes etc. The specific user defined components extend these
+abstractions. For example, Figure 1 shows a number of land surface models (Noah,
+CLM, HySSIB, Catchment) implemented in LIS through the land surface model
+abstraction. By providing a structure that allows the reuse and community
+sharing of modeling tools, LIS allows rapid prototyping and development of new
+applications. These interoperable features in LIS has enabled the incorporation
+of a growing suite of community LSMs, meteorological forcing analyses, different
+sources of land surface parameters, and data assimilation schemes. The system
+also allows for the plug and play of various user-defined components and has
+enabled several intercomparison studies involving land surface models,
+parameters, and assimilation schemes. Please refer to #[6, 5, 7]# for details on
+the design of LIS. This document provides instructions on the use of the
+"plug-and-play" features or abstractions in LIS.
+// TODO: fix references above
+// TODO: add Figure 1 from LIS v7.0 Dev Guide (or equivalent)

@@ -1,0 +1,58 @@
+= Coding and Documentation Conventions
+
+This section describes some of the coding and documentation conventions that are
+helpful for developers of LIS.
+
+== Coding Conventions
+
+LIS is implemented using the Fortran 90 and C programming languages. Since
+different Fortran compilers parse source files differently depending on the file
+extension (such as .f, .f77, .F, .f90, and .F90) the task of porting code to
+different platforms is a diffcult process. Therefore, Fortran additions and
+contributions to LIS code are expected to be written using the Fortran 90, and
+the sources files must have an F90 extension. Some of the style guidelines
+followed in LIS are as follows:
+
+* *Preprocessor:* C preprocessor (`cpp`) is used wherever the use of a language
+preprocessor is required. The Fortran compiler is assumed to have the ability to
+run the preprocessor as part of the compilation process. The preprocessing
+tokens are written in uppercase to distinguish them from the Fortran code.
+
+* *Loops:* All loops in Fortran are structured using `do`-`enddo` constructs as
+opposed to numbered loops.
+
+* *Modules:* Modules must be named the same as the file in which they reside.
+This is enforced due to the fact that `make` programs build dependencies based
+on filenames.
+
+* `Implicit none:` All variables in different modules should be explicitly
+typed, and this should be enforced by the use of the `implicit none` statement.
+
+* *Standards:* For consistency, for readability, and for use with other tools.
+LIS code must follow these coding standards. Note that code integrated into LIS
+from other sources, say University of Washington's VIC land surface model,
+should _not_ be rewritten to conform with these coding standards.
+
+** *Line length:* Lines shall not exceed 80 characters in length. Lines longer
+than 80 characters must be broken with a newline (i.e., press _Enter_) as
+opposed to soft line wrapping.
+
+** *Indentation:* Code blocks (e.g., subroutines, if blocks, do loops) are
+expected to be indented for readability. Indentation shall be 3 spaces per level
+{emdash} no Tab characters.
+
+** *Documentation:* All subroutines/functions shall be documented within the
+code, referred to as in-line documentation. User-configurable runtime settings
+shall be documented in separate files associated with the source code for each
+LISF component. See <<Documentation Conventions>> section for specific
+instructions.
+
+== Documentation Conventions
+
+// TODO: update this section with current guidance
+LIS uses an in-line documentation system that allows users to create both
+web-browsable (html) and print-friendly (ps/pdf) documentation. Each function,
+subroutine, or module includes a prologue instrumented with the ProTex
+auto-documentation script. The following examples describe the documentation
+templates used in LIS.
+

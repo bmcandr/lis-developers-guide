@@ -3,5 +3,9 @@
 This document describes some of the interoperable features in LIS and how to
 use/extend them. The following sections describe the general development and
 documentation practices recommended for using and extending LIS software,
-followed by the guidelines for using the extensible features in LIS for customiza-
-tion and improved functionality.
+followed by the guidelines for using the extensible features in LIS for
+customization and improved functionality.
+
+== Before Contributing
+
+#Add information for would-be contributors here.# Such as: "Use ModelingGuru to ask about issues encountered during compilation/runtime. If it is found that you have identified an issue/bug and you would like to contribute a fix, please open an Issue on GitHub first. Etc."

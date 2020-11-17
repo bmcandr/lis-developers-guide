@@ -14,21 +14,38 @@
 :githuburl: https://github.com
 :emdash: —
 :endash: –
-// add heading level to included files so they appear as subsections
+// add 1 header level to include:: files so they appear as subsections
+// For example: = becomes == and so on
 :leveloffset: +1
+// disable auto addition of "Chapter n." to section titles in TOC
+:chapter-label:
 
 include::intro.adoc[]
+
 include::background.adoc[]
+
 include::conventions.adoc[]
+
 include::customizable_features.adoc[]
+
 include::generic_data_structures.adoc[]
+
 include::file_IO_support.adoc[]
+
 include::how_to_add_LSM.adoc[]
+
 include::how_to_add_forcing_scheme.adoc[]
+
 include::how_to_add_domain.adoc[]
+
 include::how_to_add_parameters.adoc[]
+
 include::how_to_add_irrigation_scheme.adoc[]
+
 include::how_to_add_routing_scheme.adoc[]
+
 include::customizing_LIS_for_DA.adoc[]
+
 include::use_only_what_you_need.adoc[]
+
 include::references.adoc[]
