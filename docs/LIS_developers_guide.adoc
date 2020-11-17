@@ -1,0 +1,32 @@
+= Land Information System (LIS): LIS {lisrevision} Developer's Guide
+:revnumber: 0.1
+:revdate: 17 Nov 2020
+:doctype: book
+:sectnums:
+:toc:
+:math:
+:mathetmatical-format: svg
+:stem: latexmath
+:lisrevision: 7.3
+:lisurl: http://lis.gsfc.nasa.gov
+:svnurl: http://subversion.apache.org
+:nasalisf: https://github.com/NASA-LIS/LISF
+:githuburl: https://github.com
+:emdash: —
+:endash: –
+
+include::intro.adoc[]
+include::background.adoc[]
+include::conventions.adoc[]
+include::customizable_features.adoc[]
+include::generic_data_structures.adoc[]
+include::file_IO_support.adoc[]
+include::how_to_add_LSM.adoc[]
+include::how_to_add_forcing_scheme.adoc[]
+include::how_to_add_domain.adoc[]
+include::how_to_add_parameters.adoc[]
+include::how_to_add_irrigation_scheme.adoc[]
+include::how_to_add_routing_scheme.adoc[]
+include::customizing_LIS_for_DA.adoc[]
+include::use_only_what_you_need.adoc[]
+include::references.adoc[]
