@@ -1,0 +1,7 @@
+= Introduction
+
+This document describes some of the interoperable features in LIS and how to
+use/extend them. The following sections describe the general development and
+documentation practices recommended for using and extending LIS software,
+followed by the guidelines for using the extensible features in LIS for customiza-
+tion and improved functionality.
